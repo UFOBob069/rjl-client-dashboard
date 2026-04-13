@@ -1,0 +1,22 @@
+rules_version = '2';
+
+// Deploy: firebase deploy --only firestore:rules
+// Access: Google sign-in only, email must be @ramosjames.com (keep in sync with src/lib/authPolicy.ts).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isRjlStaff() {
+      return request.auth != null
+        && request.auth.token.email != null
+        && request.auth.token.email.matches('.*@ramosjames\\.com$');
+    }
+
+    match /clients/{clientId} {
+      allow read, write: if isRjlStaff();
+    }
+
+    match /importLogs/{logId} {
+      allow read, write: if isRjlStaff();
+    }
+  }
+}

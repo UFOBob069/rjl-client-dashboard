@@ -24,3 +24,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Mapbox GL: parent min-height + child height:100% often yields a 0×0 canvas; keep map canvas filling the shell */
+.rjl-map-root .mapboxgl-map,
+.rjl-map-root .mapboxgl-canvas-container,
+.rjl-map-root .mapboxgl-canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
