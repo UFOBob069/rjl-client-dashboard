@@ -9,7 +9,7 @@ import { clientHasCoordinates } from "@/lib/clientRecord";
 import { CLIENT_FORM_FIELDS } from "@/lib/fieldConfig";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-const MAP_STYLE = "mapbox://styles/mapbox/light-v11";
+const MAP_STYLE = "mapbox://styles/mapbox/streets-v12";
 
 function popupLines(c: Client): string[] {
   const lines: string[] = [];
